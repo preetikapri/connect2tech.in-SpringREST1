@@ -11,6 +11,8 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
 import com.c2t.annotation.basic.Employee;
+import com.c2t.annotation.basic.Employee2;
+
 
 @Repository
 public class EmployeeDAOImpl implements EmployeeDAO {
@@ -36,18 +38,26 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 	public void setDummyEmployee() {
 		
 		Employee emp = new Employee();
+		Employee2 emp2=new Employee2();
 		
 		Session session=sf.openSession();
 		session.beginTransaction();
 		emp.setId(100l);
 		
-		emp.setFirstname("sneha");
+		emp.setFirstname("aaaa");
 		emp.setLastname("dddd");
 		emp.setCellphone("11111");
-		emp.setBirthDate(new java.sql.Date(1996, 11, 07));
+		emp.setBirthDate(new java.sql.Date(1996, 11, 11));
 		
+		
+		emp2.setId(100l);
+		emp2.setFirstname("aaaa");
+		emp2.setLastname("dddd");
+		emp2.setCellphone("11111");
+		emp2.setBirthDate(new java.sql.Date(1996, 11, 11));
 		
 		session.save(emp);
+		session.save(emp2);
 		session.getTransaction().commit();
 		session.close();
 		
